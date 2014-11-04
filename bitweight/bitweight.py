@@ -239,6 +239,23 @@ class BitWeight(object):
         else: # delta > 0
             return 1
 
+    def __lt__(self, other):
+        other_bw = other if hasattr(other, 'bw') else BitWeight(other)
+        delta = other_bw.bw - self.bw
+        if delta < 0:
+            return True
+        else: # delta >= 0
+            return False
+
+    def __eq__(self, other):
+        other_bw = other if hasattr(other, 'bw') else BitWeight(other)
+        delta = other_bw.bw - self.bw
+        if delta == 0:
+            return True
+        else: 
+            return False
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
