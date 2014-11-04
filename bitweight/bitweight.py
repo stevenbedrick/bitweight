@@ -248,33 +248,24 @@ class BitWeight(object):
     # "Rich comparisons" for Python 3 support
     def __eq__(self, other):
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
-        delta = other_bw.bw - self.bw
-        if delta == 0:
-            return True
-        else: 
-            return False
-
+        return other_bw.bw == self.bw # TODO: should use close_enough() here?
+        
     def __ne__(self, other):
         return not (self == other)
 
+    # remember: in negative log space, bigger is actually smaller
+    # BitWeight(0.5).bw -> 1.0
+    # BitWeight(0.25).bw -> 2.0
     def __lt__(self, other):
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
-        delta = other_bw.bw - self.bw
-        if delta < 0: # other is less than self
-            return True
-        else: # delta >= 0
-            return False
-            
+        return self.bw > other_bw.bw
+                    
     def __le__(self, other):
         return (self == other) or (self < other)
             
     def __gt__(self, other):
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
-        delta = other_bw.bw - self.bw
-        if delta > 0: # other is greater than self
-            return True
-        else:
-            return False
+        return self.bw < other_bw.bw
             
     def __ge__(self, other):
         return (self == other) or (self > other)
