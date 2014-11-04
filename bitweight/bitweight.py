@@ -229,6 +229,12 @@ class BitWeight(object):
         False
         >>> a_bw > BitWeight(a_real - b_real)
         True
+        >>> a_bw >= b_bw
+        True
+        >>> b_bw <= a_bw
+        True
+        >>> a_bw >= BitWeight(0.5)
+        True
         """
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
         delta = other_bw.bw - self.bw
@@ -239,14 +245,7 @@ class BitWeight(object):
         else: # delta > 0
             return 1
 
-    def __lt__(self, other):
-        other_bw = other if hasattr(other, 'bw') else BitWeight(other)
-        delta = other_bw.bw - self.bw
-        if delta < 0:
-            return True
-        else: # delta >= 0
-            return False
-
+    # "Rich comparisons" for Python 3 support
     def __eq__(self, other):
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
         delta = other_bw.bw - self.bw
@@ -254,6 +253,31 @@ class BitWeight(object):
             return True
         else: 
             return False
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        other_bw = other if hasattr(other, 'bw') else BitWeight(other)
+        delta = other_bw.bw - self.bw
+        if delta < 0: # other is less than self
+            return True
+        else: # delta >= 0
+            return False
+            
+    def __le__(self, other):
+        return (self == other) or (self < other)
+            
+    def __gt__(self, other):
+        other_bw = other if hasattr(other, 'bw') else BitWeight(other)
+        delta = other_bw.bw - self.bw
+        if delta > 0: # other is greater than self
+            return True
+        else:
+            return False
+            
+    def __ge__(self, other):
+        return (self == other) or (self > other)
 
 
 if __name__ == '__main__':
