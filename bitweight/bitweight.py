@@ -1,4 +1,4 @@
-#!/usr/bin/env python -O
+#!/usr/bin/env python
 # bitweight.py: class for -log_2 math
 # Kyle Gorman <gormanky@ohsu.edu> and Steven Bedrick <bedricks@ohsu.edu>
 
@@ -235,6 +235,10 @@ class BitWeight(object):
         True
         >>> a_bw >= BitWeight(0.5)
         True
+        >>> a_bw = BitWeight(1)
+        >>> b_bw = BitWeight(1)
+        >>> cmp(a_bw, b_bw)
+        0
         """
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
         # avoid stray NaN caused by INF - INF
@@ -242,7 +246,6 @@ class BitWeight(object):
             delta = 0
         else:
             delta = other_bw.bw - self.bw
-
         delta = other_bw.bw - self.bw
         if delta == 0:
             return 0
@@ -252,14 +255,15 @@ class BitWeight(object):
             return 1
 
     # "Rich comparisons" for Python 3 support
+    # TODO: should use close_enough() here?
     def __eq__(self, other):
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
-        return other_bw.bw == self.bw # TODO: should use close_enough() here?
+        return other_bw.bw == self.bw 
         
     def __ne__(self, other):
         return not (self == other)
 
-    # remember: in negative log space, bigger is actually smaller
+    # remember: in negative log space, bigger is actually smaller, e.g.,
     # BitWeight(0.5).bw -> 1.0
     # BitWeight(0.25).bw -> 2.0
     def __lt__(self, other):
