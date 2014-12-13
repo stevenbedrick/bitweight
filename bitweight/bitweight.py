@@ -237,6 +237,12 @@ class BitWeight(object):
         True
         """
         other_bw = other if hasattr(other, 'bw') else BitWeight(other)
+        # avoid stray NaN caused by INF - INF
+        if other_bw.bw == INF and self.bw == INF:
+            delta = 0
+        else:
+            delta = other_bw.bw - self.bw
+
         delta = other_bw.bw - self.bw
         if delta == 0:
             return 0
