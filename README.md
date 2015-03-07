@@ -1,6 +1,4 @@
-===============
-BitWeight
-===============
+# BitWeight
 
 This Python module provides a class designed to make it easier to work with log-probabilites in NLP and ML applications. 
 
