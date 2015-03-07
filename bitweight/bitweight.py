@@ -4,9 +4,18 @@
 
 from __future__ import division
 
-from numpy import log2, exp2
+from math import exp, log
+
 
 INF = float("inf")
+
+
+def log2(x):
+    return log(x, 2)
+
+
+def exp2(x):
+    return 2 ** x
 
 
 class BitWeight(object):
