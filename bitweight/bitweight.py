@@ -213,6 +213,17 @@ class BitWeight(object):
         """
         return self / other 
 
+    def __pow__(self, other):
+        """
+        Real-Space Exponentiation
+
+        >>> bw = BitWeight(0.5)
+        >>> e_bw = bw ** 3
+        >>> BitWeight.close_enough(e_bw.to_real, 0.125)
+        True
+        """
+        return BitWeight(self.bw * other, True)
+
     @staticmethod
     def close_enough(x, y, tol=1e-8):
         """
