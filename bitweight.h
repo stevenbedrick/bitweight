@@ -19,13 +19,16 @@ class BitWeightTpl {
  public:
   // Constructs BitWeightTpl from real-valued floating-point number type T;
   // it is set to infinity when the input value is zero.
-  explicit BitWeightTpl(const T x)
+  explicit BitWeightTpl<T>(const T x)
       : bw_(x == 0. ? std::numeric_limits<T>::infinity() : -log2(x)) {
     assert(x >= 0.);
   }
 
-  // Constructs BitWeightTpl from fraction.
-  BitWeightTpl(const T n, const T d) : BitWeightTpl(n / d) {}
+  // Constructs BitWeightTpl from fraction, by constructing the numerator, then
+  // "dividing" by the denominator in place.
+  BitWeightTpl<T>(const T n, const T d) : BitWeightTpl<T>(n) {
+    *this /= BitWeightTpl<T>(d);
+  }
 
   // Default constructors are all implicitly present, too.
 
