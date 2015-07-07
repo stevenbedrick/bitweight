@@ -1,3 +1,5 @@
+"""BitWeight Python wrapper."""
+
 from libcpp cimport bool
 from cython.operator cimport dereference as deref
 from cython import address

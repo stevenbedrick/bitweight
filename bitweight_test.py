@@ -1,3 +1,5 @@
+"""Tests of the BitWeight Python wrapper."""
+
 import unittest
 
 from bitweight import PywrapBitWeight as BitWeight
