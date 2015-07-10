@@ -2,7 +2,6 @@
 
 from libcpp cimport bool
 from cython.operator cimport dereference as deref
-from cython import address
 
 
 cdef extern from "bitweight.h" namespace "bitweight" nogil:
