@@ -91,6 +91,7 @@ template <typename T>
 BitWeightTpl<T> operator/(BitWeightTpl<T> lhs, BitWeightTpl<T> rhs) {
   return lhs /= rhs;
 }
+
 using BitWeight = BitWeightTpl<double>;
 
 };  // namespace bitweight

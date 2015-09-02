@@ -1,8 +1,10 @@
 """Tests of the BitWeight Python wrapper."""
 
+from __future__ import division
+
 import unittest
 
-from bitweight import PywrapBitWeight as BitWeight
+from bitweight import BitWeight, BitWeightRangeError
 
 
 class TestBitWeight(unittest.TestCase):
@@ -16,13 +18,13 @@ class TestBitWeight(unittest.TestCase):
     self.millenium = BitWeight(1000)
 
   def testNegativeAssertions(self):
-    with self.assertRaises(AssertionError):
+    with self.assertRaises(BitWeightRangeError):
       unused_v = BitWeight(-.5)
-    with self.assertRaises(AssertionError):
+    with self.assertRaises(BitWeightRangeError):
       unused_v = BitWeight(-1, 2)
-    with self.assertRaises(AssertionError):
+    with self.assertRaises(BitWeightRangeError):
       unused_v = BitWeight(1, -2)
-    with self.assertRaises(AssertionError):
+    with self.assertRaises(BitWeightRangeError):
       unused_v = BitWeight(1, 0)
 
   def testAddition(self):
@@ -31,7 +33,7 @@ class TestBitWeight(unittest.TestCase):
     self.assertEqual((self.quarter + self.half).real(), .75)
 
   def testMultiplication(self):
-    one_quarter = .125 
+    one_quarter = .125
     self.assertEqual((self.half * self.quarter).real(), .125)
     self.assertEqual((self.quarter * self.half).real(), .125)
 
