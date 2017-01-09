@@ -4,4 +4,5 @@ This C++ header and accompanying Python module provide classes designed to make 
 
 A BitWeight is a real-space value represented internally as a negative base-2 logarithm, similar to that used in the log probability semiring, and used to avoid underflow. 
 
-BitWeight was written by Kyle Gorman and Steven Bedrick.
+BitWeight is (c) 2014 by Kyle Gorman and Steven Bedrick, and is released under the 3-clause BSD License. See `LICENSE.txt` for more details.
+
