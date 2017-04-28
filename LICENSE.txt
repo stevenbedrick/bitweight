@@ -1,4 +1,4 @@
-Copyright 2014, Kyle Gorman and Steven Bedrick. All rights reserved.
+Copyright 2014, Kyle Gorman, Steven Bedrick and Shiran Dudy. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
