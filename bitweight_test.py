@@ -32,6 +32,9 @@ class TestBitWeight(unittest.TestCase):
     self.assertEqual((self.half + self.quarter).real(), .75)
     self.assertEqual((self.quarter + self.half).real(), .75)
 
+    # test the code path for equal values
+    self.assertEqual((self.quarter + self.quarter).real(), 0.5)
+
   def testMultiplication(self):
     one_quarter = .125
     self.assertEqual((self.half * self.quarter).real(), .125)
