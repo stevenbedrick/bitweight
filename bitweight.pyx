@@ -29,6 +29,9 @@ cdef class BitWeight(object):
   def real(self):
     return self.ptr.real()
 
+  def log(self):
+    return self.ptr.log()
+
   # Overloads.
 
   def __iadd__(self, BitWeight rhs):

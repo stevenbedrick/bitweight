@@ -34,6 +34,9 @@ class BitWeightTpl {
 
   // Converts BitWeightTpl to real-valued number.
   T real() const { return exp2(-bw_); }
+  
+  // return the BW's negative log value
+  T log() const { return bw_; }
 
   bool operator<(BitWeightTpl<T> rhs) { return bw_ > rhs.bw_; }
 

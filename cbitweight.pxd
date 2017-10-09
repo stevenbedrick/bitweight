@@ -12,6 +12,7 @@ cdef extern from "bitweight.h" namespace "bitweight" nogil:
     BitWeight(double, double)
 
     double real()
+    double log()
 
     bool operator<(BitWeight)
     bool operator==(BitWeight)
